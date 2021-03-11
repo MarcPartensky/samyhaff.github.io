@@ -1,6 +1,0 @@
-#!/bin/sh
-
-msg="Regenerated at $(date -u '+%Y-%m-%d %H:%M:%S') UTC"
-git add *
-git commit -m "$msg"
-git push origin master
