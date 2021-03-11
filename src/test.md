@@ -1,18 +1,143 @@
-# Titre principal 
+# TD 1
 
-## Sous titre 
+## Nombre d'apparition d'un motif
 
-Durant la première moitié des années 1990, avant l’apparition des technologies web comme le langage **JavaScript** (js), les feuilles de style en cascade (css) et le Document Object Model (Dom), l’évolution de HTML a dicté l’évolution du World Wide Web. Depuis 1997 et HTML 4, l’évolution de HTML a fortement ralenti ; 10 ans plus tard, HTML 4 reste utilisé dans les pages web. En 2008, la spécification du HTML5 est à l’étude2 et devient d'usage courant dans la seconde moitié des années 2010. 
+### Motif hardcoded
 
 ```
-int main(int argc, char **argv)
-{
-    printf("%s", "Hello, World!");
-    return 0;
-}
+fonction principale
+problème: calculer le nombre d'apparition d'un motif dans une séquence de lettres
+terminée par un point
+types
+    chaine: chaine de caractères // vecteur de caractères
+constantes
+    chaine motif // motif de taille *longueur*
+
+algorithme
+variables
+    caractère lettre // la lettre courante
+    entier avancée // avancée dans le motif
+    entier nbApparition // nombre d'apparition du motif dans la séquence
+début
+    avancée <- 0 
+    lettre <- lire()
+    nbApparition <- 0
+
+    tant que (lettre != '.') faire
+        si (lettre = motif[avancée])
+            si (avancée = longueur - 1)
+                nbApparition +<- 1
+                si lettre = motif[0]
+                    avancée <- 1
+                sinon 
+                    avancée <- 0   
+                fin si
+            sinon 
+                avancée +<- 1
+            fin si
+        sinon
+            si (lettre = motif[0]) alors
+                avancée <- 1
+            sinon 
+                avancée <- 0   
+        fin si
+    fin tant que
+
+    afficher nbApparition
+fin
 ```
 
-* liste 1
-* liste 1
-    * liste 2 
-    * liste 2
+### Motif quelconque
+
+```
+fonction principale
+problème: calculer le nombre d'apparition d'un motif dans une séquence de lettres
+terminée par un point
+types
+    chaine: chaine de caractères // vecteur de caractères
+
+algorithme
+variables
+    caractère lettre // la lettre courante
+    entier avancée // avancée dans le motif
+    entier nbApparition // nombre d'apparition du motif dans la séquence
+    entier longueur
+    chaine motif // motif de taille *longueur*
+début
+    longueur <- lire()
+    motif <- lire()
+    avancée <- 0 
+    lettre <- lire()
+    nbApparition <- 0
+
+    tant que (lettre != '.') faire
+        si (lettre = motif[avancée])
+            si (avancée = longueur - 1)
+                nbApparition +<- 1
+                si lettre = motif[0] alors
+                    avancée <- 1
+                sinon 
+                    avancée <- 0   
+                fin si
+            sinon 
+                avancée +<- 1
+            fin si
+        sinon
+            si (lettre = motif[0]) alors
+                avancée <- 1
+            sinon 
+                avancée <- 0   
+        fin si
+    fin tant que
+
+    afficher nbApparition
+fin
+```
+
+## Jeu des allumettes
+
+```
+fonction principale 
+constantes
+    entier nbAllumettes_init // le nombre d'alumettes au début de la partie
+
+algorithme
+variables
+    entier choix // le nombre d'allumettes retirées
+    entier nbAllumettes // le nombre d'allumettes restant
+    bool joueur // au tour du joueur
+    entier reste // le nombre d'alumettes restantes modulo 4
+    bool correct // indique si l'entrée est autorisée
+début
+    correct <- faux
+    nbAlumettes <- nbAlumettes_init
+    joeur <- vrai // le joueur commence
+    afficher(nbAllumettes)
+    tant que (nbAllumettes > 0) faire
+        si (joueur) 
+            tant que (!correct) faire
+                afficher("Combien d'allumettes voulez vous retirer?")
+                choix <- lire()
+                si (estEntier(choix) et choix >= 1 et choix <= 3)
+                    correct <- vrai
+                    nbAllumettes -<- choix
+                fin si
+            fin tant que
+        sinon // tour de l'ordinateur
+            reste <- nbAllumettes mod 4
+            si (reste = 0) faire // il n y pas de bon choix dans ce cas
+                choix = 1 
+            sinon 
+                choix <- reste - 1
+        fin si
+        afficher(nbAllumettes)
+        joueur <- !joueur
+        correct <- faux
+    fin tant que
+    si (joueur) alors
+        afficher("L'ordinateur a gagné")
+    sinon
+        afficher("Le joueur a gagné)
+    fin si
+fin
+```
