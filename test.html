@@ -1,0 +1,130 @@
+<h1 id="td-1">TD 1</h1>
+<h2 id="nombre-dapparition-dun-motif">Nombre d’apparition d’un motif</h2>
+<h3 id="motif-hardcoded">Motif hardcoded</h3>
+<pre><code>fonction principale
+problème: calculer le nombre d&#39;apparition d&#39;un motif dans une séquence de lettres
+terminée par un point
+types
+    chaine: chaine de caractères // vecteur de caractères
+constantes
+    chaine motif // motif de taille *longueur*
+
+algorithme
+variables
+    caractère lettre // la lettre courante
+    entier avancée // avancée dans le motif
+    entier nbApparition // nombre d&#39;apparition du motif dans la séquence
+début
+    avancée &lt;- 0 
+    lettre &lt;- lire()
+    nbApparition &lt;- 0
+
+    tant que (lettre != &#39;.&#39;) faire
+        si (lettre = motif[avancée])
+            si (avancée = longueur - 1)
+                nbApparition +&lt;- 1
+                si lettre = motif[0]
+                    avancée &lt;- 1
+                sinon 
+                    avancée &lt;- 0   
+                fin si
+            sinon 
+                avancée +&lt;- 1
+            fin si
+        sinon
+            si (lettre = motif[0]) alors
+                avancée &lt;- 1
+            sinon 
+                avancée &lt;- 0   
+        fin si
+    fin tant que
+
+    afficher nbApparition
+fin</code></pre>
+<h3 id="motif-quelconque">Motif quelconque</h3>
+<pre><code>fonction principale
+problème: calculer le nombre d&#39;apparition d&#39;un motif dans une séquence de lettres
+terminée par un point
+types
+    chaine: chaine de caractères // vecteur de caractères
+
+algorithme
+variables
+    caractère lettre // la lettre courante
+    entier avancée // avancée dans le motif
+    entier nbApparition // nombre d&#39;apparition du motif dans la séquence
+    entier longueur
+    chaine motif // motif de taille *longueur*
+début
+    longueur &lt;- lire()
+    motif &lt;- lire()
+    avancée &lt;- 0 
+    lettre &lt;- lire()
+    nbApparition &lt;- 0
+
+    tant que (lettre != &#39;.&#39;) faire
+        si (lettre = motif[avancée])
+            si (avancée = longueur - 1)
+                nbApparition +&lt;- 1
+                si lettre = motif[0] alors
+                    avancée &lt;- 1
+                sinon 
+                    avancée &lt;- 0   
+                fin si
+            sinon 
+                avancée +&lt;- 1
+            fin si
+        sinon
+            si (lettre = motif[0]) alors
+                avancée &lt;- 1
+            sinon 
+                avancée &lt;- 0   
+        fin si
+    fin tant que
+
+    afficher nbApparition
+fin</code></pre>
+<h2 id="jeu-des-allumettes">Jeu des allumettes</h2>
+<pre><code>fonction principale 
+constantes
+    entier nbAllumettes_init // le nombre d&#39;alumettes au début de la partie
+
+algorithme
+variables
+    entier choix // le nombre d&#39;allumettes retirées
+    entier nbAllumettes // le nombre d&#39;allumettes restant
+    bool joueur // au tour du joueur
+    entier reste // le nombre d&#39;alumettes restantes modulo 4
+    bool correct // indique si l&#39;entrée est autorisée
+début
+    correct &lt;- faux
+    nbAlumettes &lt;- nbAlumettes_init
+    joeur &lt;- vrai // le joueur commence
+    afficher(nbAllumettes)
+    tant que (nbAllumettes &gt; 0) faire
+        si (joueur) 
+            tant que (!correct) faire
+                afficher(&quot;Combien d&#39;allumettes voulez vous retirer?&quot;)
+                choix &lt;- lire()
+                si (estEntier(choix) et choix &gt;= 1 et choix &lt;= 3)
+                    correct &lt;- vrai
+                    nbAllumettes -&lt;- choix
+                fin si
+            fin tant que
+        sinon // tour de l&#39;ordinateur
+            reste &lt;- nbAllumettes mod 4
+            si (reste = 0) faire // il n y pas de bon choix dans ce cas
+                choix = 1 
+            sinon 
+                choix &lt;- reste - 1
+        fin si
+        afficher(nbAllumettes)
+        joueur &lt;- !joueur
+        correct &lt;- faux
+    fin tant que
+    si (joueur) alors
+        afficher(&quot;L&#39;ordinateur a gagné&quot;)
+    sinon
+        afficher(&quot;Le joueur a gagné)
+    fin si
+fin</code></pre>
