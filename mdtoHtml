@@ -1,0 +1,3 @@
+#!/bin/sh
+
+for f in src/*.md ; do g=$(basename $f) ; g=${g%.md}.html ; cat header.html <( pandoc $f) footer.html > $g ; done
