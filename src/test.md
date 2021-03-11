@@ -4,7 +4,7 @@
 
 Durant la première moitié des années 1990, avant l’apparition des technologies web comme le langage **JavaScript** (js), les feuilles de style en cascade (css) et le Document Object Model (Dom), l’évolution de HTML a dicté l’évolution du World Wide Web. Depuis 1997 et HTML 4, l’évolution de HTML a fortement ralenti ; 10 ans plus tard, HTML 4 reste utilisé dans les pages web. En 2008, la spécification du HTML5 est à l’étude2 et devient d'usage courant dans la seconde moitié des années 2010. 
 
-``` 
+```
 int main(int argc, char **argv)
 {
     printf("%s", "Hello, World!");
