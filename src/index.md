@@ -5,5 +5,5 @@ I enjoy spending most of my time coding stuff and I hope to document on this web
 my future projects.
 
 ## Articles
-* My setup 
+* My Linux setup 
 * This website 
